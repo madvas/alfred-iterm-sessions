@@ -1,4 +1,4 @@
-set q to "1 1"
+set q to "1 1 1"
 
 set theQuery to "{query}"
 set params to theSplit(theQuery, " ") of me
