@@ -15,7 +15,13 @@ tell application "iTerm"
 				set theName to name of current session
 				set theId to name of current session
 				set j to j + 1
-				set xmlResult to addSessionItem(theName, theId, i, j, xmlResult) of me
+				if length of theQuery > 0 then
+					if theQuery is in theName then
+						set xmlResult to addSessionItem(name, id, i, j, xmlResult) of me
+					end if
+				else
+					set xmlResult to addSessionItem(name, id, i, j, xmlResult) of me
+				end if
 			end repeat
 		end tell
 	end repeat
