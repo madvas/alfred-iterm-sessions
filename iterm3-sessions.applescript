@@ -12,20 +12,22 @@ tell application "iTerm"
 		set j to 0
 		tell theTerm
 			repeat with theTab in tabs
-				set theName to name of current session
-				set theId to name of current session
+				set theSession to current session of theTab
+				set theName to name of theSession
+				set theId to id of theSession
 				set j to j + 1
 				if length of theQuery > 0 then
 					if theQuery is in theName then
-						set xmlResult to addSessionItem(name, id, i, j, xmlResult) of me
+						set xmlResult to addSessionItem(theName, theId, i, j, xmlResult) of me
 					end if
 				else
-					set xmlResult to addSessionItem(name, id, i, j, xmlResult) of me
+					set xmlResult to addSessionItem(theName, theId, i, j, xmlResult) of me
 				end if
 			end repeat
 		end tell
 	end repeat
 end tell
+
 
 set xmlResult to xmlResult & "</items>"
 xmlResult
